@@ -98,6 +98,8 @@ public class Programa {
             }while(ganador != true && finJuego != true);
         }while(seguirJugando);    
     }
+
+    /*-----------------------Funciones------------------------------------- */
     public static void mostrarTablero(int tablero[][]){
         //Recorre el tablero y saca valores diferentes en caso de ser 1, 2 o 0
         for(int i=0; i<6; i++){
