@@ -1,9 +1,9 @@
 package main;
 
 import Funciones.leerDatosTeclado;
-import Funciones.conectaCuatro;
+import Funciones.funcionesConectaCuatro;
 
-public class Programa {
+public class Juego {
 
     //He conseguido que funcione, el único problema es que cuando en horizontal o diagonal es igual a 0 o 6 no funciona bien la operación lógica
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Programa {
         boolean seguirJugando = false;
         
         do{
-            int tablero[][] = new int[6][7];
+            ConectaCuatro tablero = new ConectaCuatro();
             final int j1 = 1;
             final int j2 = 2;
             int jugadorInicial = (int) Math.floor(Math.random()*(2-1+1)+1);
@@ -32,7 +32,7 @@ public class Programa {
             }
 
             System.out.println("Este es vuestro tablero ");
-            conectaCuatro.mostrarTablero(tablero);
+            tablero.imprimir();
             System.out.println("Que comience el juego");
 
             //Comienzo del juego, Estructura un do/while, que se ejecutara mientras ganador y finJuego sean Falsos
@@ -55,13 +55,13 @@ public class Programa {
                     columna -= 1;
                     
                     //En vez de que la función colocar calcule la casilla en la que se coloca, haré otra función con la que calcularlo ara así guardar la última posición
-                    colocar = conectaCuatro.colocarFicha(tablero, columna, turnoActual);
+                    colocar = tablero.colocarFicha(columna, turnoActual);
                 }
                 
                 //Muestra del tablero tras colocar la ficha
-                conectaCuatro.mostrarTablero(tablero);
+                tablero.imprimir();
                 if(turno >= 7){
-                    ganador = conectaCuatro.hayGanador(tablero, columna, turnoActual);
+                    ganador = tablero.hayGanador(columna, turnoActual);
                 }
                 colocar = false;
                 
@@ -87,14 +87,14 @@ public class Programa {
                 }
                 
                 //Comprueba que halla casillas vacias
-                finJuego = conectaCuatro.finJuego(tablero);
+                finJuego = tablero.juegoTerminado();
                 if(finJuego){
                     System.out.println("El tablero está lleno, hay un empate");
                 }
                 
                 //Pide un mensaje para seguir jugando o no
                 if(ganador){
-                    seguirJugando = conectaCuatro.volverAJugar();
+                    seguirJugando = funcionesConectaCuatro.volverAJugar();
                 }
             }while(ganador != true && finJuego != true);
         }while(seguirJugando);    

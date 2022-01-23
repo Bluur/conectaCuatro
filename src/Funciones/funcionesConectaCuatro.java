@@ -1,7 +1,7 @@
 
 package Funciones;
 
-public class conectaCuatro {
+public class funcionesConectaCuatro {
     /*-----Funciones Principales para el funcionamiento del programa-----*/
     public static void mostrarTablero(int tablero[][]){
         //Recorre el tablero y saca valores diferentes en caso de ser 1, 2 o 0
@@ -22,28 +22,7 @@ public class conectaCuatro {
             System.out.print("\n");
         }
     }
-    public static boolean colocarFicha(int tablero[][], int columna,int turnoActual){
-        //Si la posición seleccionada arriba tiene un valor diferente de 0 significa que esta lleno
-        if(tablero[0][columna] != 0){
-            System.out.println("Esa columna está llena, intentalo de nuevo");
-            return false;
-        }else{
-            //Recorremos la columna hasta que demos con una ficha contraria o sea el final
-            int posicionFinal = 0;
-            for(int i=0; i<6; i++){
-                if(tablero[i][columna] == 0){
-                    posicionFinal = i;
-                }
-            }
-            //Asignamos la ficha a la posición final vacia 
-            if(turnoActual == 1){
-                tablero[posicionFinal][columna] = 1;
-            }else if(turnoActual == 2){
-                tablero[posicionFinal][columna] = 2;
-            }
-            return true;
-        }
-    }
+    
     public static boolean hayGanador(int tablero[][], int columna, int turnoActual){
         int fila = 0;
         boolean comprobacion = true;
